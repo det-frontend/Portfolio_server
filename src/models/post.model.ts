@@ -4,6 +4,8 @@ const { Schema } = mongoose;
 export interface postDocument extends mongoose.Document {
   title: string;
   desc: string;
+  photo: string;
+  categories: [];
 }
 
 const postSchema = new Schema(

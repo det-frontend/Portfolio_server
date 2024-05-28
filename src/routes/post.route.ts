@@ -1,14 +1,17 @@
-import { postCreate } from "../controllers/post.controller";
+import {
+  postCreate,
+  postDelete,
+  postGetAll,
+  postGetSingle,
+} from "../controllers/post.controller";
+import { update } from "../controllers/user.controller";
+import { saveFile } from "../utils/gallery";
 
 const postRouter = require("express").Router();
 
-postRouter.post("/", postCreate);
-// postRouter.get("/", controller.all);
+postRouter.post("/", saveFile, postCreate);
+postRouter.get("/", postGetAll);
 
-// postRouter
-//   .route("/:id")
-//   .get(controller.get)
-//   .patch(controller.patch)
-//   .delete(controller.drop);
+postRouter.route("/:id").get(postGetSingle).patch(update).delete(postDelete);
 
 export default postRouter;

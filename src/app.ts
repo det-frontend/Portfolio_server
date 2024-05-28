@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import postRouter from "./routes/post.route";
 import { dbConnect } from "./utils/dbConnect";
+import fileUpload from "express-fileupload";
 import userRouter from "./routes/user.route";
 // import cors from "cors";
 // import cors
@@ -15,6 +16,8 @@ const port = process.env.PORT || 3000;
 
 dbConnect();
 app.use(express.json());
+app.use(fileUpload());
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello world ...");
 });
